@@ -1,7 +1,22 @@
+import { useAuth } from "@/stores/auth";
 import { router } from "expo-router";
+import { useEffect } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 
 export default function WelcomeScreen() {
+
+    const { user, init } = useAuth();
+
+    useEffect(() => {
+        init();
+    }, []);
+
+    useEffect(()=>{
+        if(user){
+            router.push("/user/home");
+        }
+    },[user])
+
     return (
         <View className="flex-1 bg-white justify-between p-6">
             

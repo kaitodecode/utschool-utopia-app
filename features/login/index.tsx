@@ -2,14 +2,23 @@ import { Image, Pressable, Text, TextInput, View, ScrollView, Alert } from "reac
 import { AntDesign, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/libs/firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { router } from "expo-router";
+import { useAuth } from "@/stores/auth";
 
 export default function LoginScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const { setUser, user } = useAuth();
+
+
+    useEffect(() => {
+        if (user) {
+            router.push("/user/home");
+        }
+    }, [user]);
 
     const handleLogin = async () => {
         setLoading(true);
@@ -18,6 +27,7 @@ export default function LoginScreen() {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             console.log("Login berhasil:", userCredential.user);
+            setUser(userCredential.user);
             Alert.alert('Success', 'Login successful');
             router.push("/user/home");
         } catch (err: any) {

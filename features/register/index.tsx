@@ -2,8 +2,9 @@ import { Image, Pressable, Text, TextInput, View, ScrollView, Alert } from "reac
 import { AntDesign, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/libs/firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { router } from "expo-router";
+import { useAuth } from "@/stores/auth";
 
 export default function RegisterScreen() {
     const [email, setEmail] = useState('');
@@ -12,12 +13,22 @@ export default function RegisterScreen() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
+    const { user } = useAuth();
+
+
+
+    useEffect(() => {
+        if (user) {
+            router.push("/user/home");
+        }
+    }, [user]);
+
     const handleRegister = async () => {
         if (password !== confirmPassword) {
             setError('Passwords do not match');
             return;
         }
-        
+
         if (password.length < 6) {
             setError('Password must be at least 6 characters');
             return;
@@ -25,7 +36,7 @@ export default function RegisterScreen() {
 
         setLoading(true);
         setError('');
-        
+
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             Alert.alert('Success', 'Registration successful');
@@ -43,8 +54,8 @@ export default function RegisterScreen() {
             {/* Background Decorative Elements */}
             <View className="absolute top-0 right-0 w-32 h-32 bg-black rounded-full -mr-16 -mt-16" />
             <View className="absolute bottom-20 left-0 w-40 h-40 bg-black rounded-full -ml-20" />
-            
-            <ScrollView className="flex-1" contentContainerStyle={{flexGrow: 1}}>
+
+            <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
                 <View className="flex-1 justify-center items-center px-8 py-12">
                     {/* Main Card */}
                     <View className="bg-white rounded-3xl p-8 w-full max-w-sm shadow-2xl">
@@ -83,17 +94,16 @@ export default function RegisterScreen() {
                                 secureTextEntry
                                 className="bg-gray-100 px-4 py-4 rounded-xl text-base"
                             />
-                            
+
                             {error ? (
                                 <Text className="text-red-500 text-sm text-center">{error}</Text>
                             ) : null}
                         </View>
 
                         {/* Sign Up Button */}
-                        <Pressable 
-                            className={`mt-6 py-4 rounded-full ${
-                                loading ? 'bg-gray-300' : 'bg-yellow-400 active:bg-yellow-600'
-                            }`}
+                        <Pressable
+                            className={`mt-6 py-4 rounded-full ${loading ? 'bg-gray-300' : 'bg-yellow-400 active:bg-yellow-600'
+                                }`}
                             onPress={handleRegister}
                             disabled={loading}
                         >
