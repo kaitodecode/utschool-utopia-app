@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "428280626242",
+    "project_id": "utopia-64d38",
+    "storage_bucket": "utopia-64d38.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428280626242:android:3939ace2ea2fd7648f41db",
+        "android_client_info": {
+          "package_name": "com.kaitodecode.utopia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428280626242-3r616c7btegrdkdrik5dbc5l5n7rskki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kaitodecode.utopia",
+            "certificate_hash": "630c6c99ddcf5df44227df10913768a176bd38ce"
+          }
+        },
+        {
+          "client_id": "428280626242-en4m3ccn0bjsd5fkddrct6vp6nqo72kg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcGAEDOvYdB_RzvpjrNGOd4whyfGJPSe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428280626242-en4m3ccn0bjsd5fkddrct6vp6nqo72kg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
