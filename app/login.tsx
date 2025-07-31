@@ -1,5 +1,5 @@
 import LoginScreen from "@/features/login";
-import { Text, View } from "react-native";
+import React from "react";
 
 export default function LoginRoute() {
   return <LoginScreen />

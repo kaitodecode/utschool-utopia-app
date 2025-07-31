@@ -9,6 +9,15 @@ export default function StoryLayout() {
             }}
         >
             <Stack.Screen name="index" />
+            <Stack.Screen name="read" />
+            <Stack.Screen name="detail"
+                options={{
+                    title: 'Story Detail',
+                    presentation: 'transparentModal',
+                    animation: 'slide_from_bottom',
+                    headerShown: false,
+                }}
+            />
         </Stack>
     );
 }

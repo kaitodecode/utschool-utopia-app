@@ -1,3 +1,4 @@
+import React from "react";
 import { useAuth } from "@/stores/auth";
 import { router } from "expo-router";
 import { useEffect } from "react";

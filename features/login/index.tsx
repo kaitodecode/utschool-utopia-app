@@ -1,3 +1,4 @@
+import React from "react";
 import { Image, Pressable, Text, TextInput, View, ScrollView, Alert } from "react-native";
 import { AntDesign, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { signInWithEmailAndPassword } from "firebase/auth";

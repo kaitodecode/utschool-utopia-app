@@ -28,6 +28,7 @@ interface AuthState {
   user: User | null
   loading: boolean
   error: string
+  logout: () => void;
   setUser: (user: any | null) => void
   setLoading: (loading: boolean) => void
   setError: (error: string) => void
@@ -57,5 +58,14 @@ export const useAuth = create<AuthState>((set) => ({
     } catch (error) {
       set({ error: 'Failed to load user data' })
     }
+  },
+  logout: async () => {
+    try {
+      await AsyncStorage.removeItem('user')
+      set({ user: null })
+    } catch (error) {
+      set({ error: 'Failed to logout' })
+    }
   }
+
 }))
