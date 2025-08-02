@@ -1,10 +1,10 @@
+import { useAuth } from "@/stores/auth";
 import { useRoute } from "@react-navigation/native";
-import { Pressable, ScrollView, Text, View } from "react-native";
-import { Story } from "../home";
-import { useEffect, useState } from "react";
 import axios from "axios";
 import { router } from "expo-router";
-import { useAuth } from "@/stores/auth";
+import { useEffect, useState } from "react";
+import { Pressable, ScrollView, Text, View } from "react-native";
+import { Story } from "../home";
 
 export default function ReadScreen() {
     const route = useRoute();
@@ -19,7 +19,7 @@ export default function ReadScreen() {
         }
 
         try {
-            const response = await axios.post(`https://57217e99994f.ngrok-free.app/reading`, {
+            const response = await axios.post(`https://77d468dee296.ngrok-free.app/reading`, {
                 email: user.email,
                 story_id: id,
                 is_finish: false
@@ -44,7 +44,7 @@ export default function ReadScreen() {
 
     useEffect(() => {
         const fetchStory = async () => {
-            const response = await axios.get(`https://57217e99994f.ngrok-free.app/stories/${id}`);
+            const response = await axios.get(`https://77d468dee296.ngrok-free.app/stories/${id}`);
             console.log(response)
             setStory(response.data.data);
         };

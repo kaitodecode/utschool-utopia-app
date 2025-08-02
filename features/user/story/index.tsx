@@ -1,8 +1,8 @@
+import axios from "axios";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { Text, View, FlatList, TouchableOpacity, Image } from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { GenreSection, Story } from "../home";
-import axios from "axios";
 
 export default function StoryScreen() {
     const { id } = useLocalSearchParams();
@@ -14,7 +14,7 @@ export default function StoryScreen() {
 
     const fetchStory = async () => {
         try {
-            const response = await axios.get(`https://57217e99994f.ngrok-free.app/stories`);
+            const response = await axios.get(`https://77d468dee296.ngrok-free.app/stories`);
             const stories = response.data.data;
             setGenres(stories);
 

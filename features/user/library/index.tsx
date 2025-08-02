@@ -36,7 +36,7 @@ export default function LibraryScreen() {
 
     const fetchLibraryItems = async() => {
         try {
-            const response = await axios.get("https://57217e99994f.ngrok-free.app/stories/user/"+user?.email);
+            const response = await axios.get("https://77d468dee296.ngrok-free.app/stories/user/"+user?.email);
             setLibraryItems(response.data.data);
         } catch (error) {
             // console.log("Error fetching library items:", error);
@@ -45,7 +45,7 @@ export default function LibraryScreen() {
     
     const toggleFinishStatus = async (itemId: string, currentStatus: boolean) => {
         try {
-            await axios.put(`https://57217e99994f.ngrok-free.app/reading/${itemId}`, {
+            await axios.put(`https://77d468dee296.ngrok-free.app/reading/${itemId}`, {
                 is_finish: !currentStatus
             });
             await fetchLibraryItems();

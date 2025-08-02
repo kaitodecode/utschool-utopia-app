@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView, View, Text, Image, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
 import axios from 'axios';
+import { useRouter } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 export interface Story {
   id: string;
@@ -43,7 +43,7 @@ export default function HomeScreen() {
   const fetchStories = async() => {
     try {
       setIsLoading(true);
-      const response = await axios.get("https://57217e99994f.ngrok-free.app/stories");
+      const response = await axios.get("https://77d468dee296.ngrok-free.app/stories");
       setStories(response.data.data);
     } catch (error) {
       console.error("Error fetching stories:", error);

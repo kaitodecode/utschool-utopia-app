@@ -1,10 +1,10 @@
-import { Image, Pressable, ScrollView, Text, View } from "react-native";
-import { useRoute } from "@react-navigation/native";
-import { useEffect, useState } from "react";
-import { Story } from "../home";
-import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
+import axios from "axios";
 import { router } from "expo-router";
+import { useEffect, useState } from "react";
+import { Image, Pressable, ScrollView, Text, View } from "react-native";
+import { Story } from "../home";
 
 export default function StoryDetailScreen() {
     const route = useRoute();
@@ -12,7 +12,7 @@ export default function StoryDetailScreen() {
     const [story, setStory] = useState<Story | null>(null);
     useEffect(() => {
         const fetchStory = async () => {
-            const response = await axios.get(`https://57217e99994f.ngrok-free.app/stories/${id}`);
+            const response = await axios.get(`https://77d468dee296.ngrok-free.app/stories/${id}`);
             console.log(response)
             setStory(response.data.data);
         };
